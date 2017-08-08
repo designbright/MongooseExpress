@@ -1,0 +1,51 @@
+<!-- This page should render in browser as  http://localhost:3000/contactForm -->
+<!--On page, when you click on link "New Contact" it should also take you to http://localhost:3000/contactForm -->
+<!--The "New Contact" link comes from the main.handlebars file  -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/style.css">
+  <title>New Contact</title>
+</head>
+
+<body>
+
+  <h1>Add a New Club</h1>
+
+  <form action="/saveContact" method="post">
+    <label for="clubName">Club Name</label>
+    <input type="text" id="clubName" name="clubName" value="{{contact.clubName}}" />
+    <div class="fieldError">{{errors.clubName.message}}</div>
+
+    <br/>
+
+    <label for="clubLocation">Club Location</label>
+    <input type="text" id="clubLocation" name="clubLocation" value="{{contact.clubLocation}}" />
+    <div class="fieldError">{{errors.clubLocation.message}}</div>
+    <br />
+
+    <label for="recruiting">College Recruiting Program</label>
+    <input type="text" id="recruiting" name="recruiting" value="{{contact.recruiting}}" />
+    <br />
+
+    <label for="price">Price per Year</label>
+    <input type="text" id="price" name="price" value="{{contact.price}}" />
+    <br />
+
+    <label for="teams">Teams</label>
+    <input type="text" id="teams" name="teams" value="{{contact.teams}}" />
+    <br />
+    <div class="fieldError">{{errors.teams.message}}</div>
+    <br />
+
+    {{#if contact._id}}
+      <input type="hidden" name="id" value="{{contact._id}}" />
+    {{/if}}
+
+    <button class="button-primary">Add Club</button>
+  </form>
+
+</body>
+</html>
