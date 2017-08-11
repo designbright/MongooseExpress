@@ -12,6 +12,7 @@ const Schema = mongoose.Schema;
     price: { type: Number, required: true },
     teams: []
   });
+
 // const contactSchema = new Schema({
 //   firstName: { type: String, required: true },
 //   lastName: { type: String, required: true },

@@ -2,6 +2,7 @@
 console.log("routes.js file ready")
 
 //REQUIRE PACKAGES
+const mongoose=require('mongoose');
 const express = require('express');
 const routes = express.Router();
 
@@ -29,6 +30,10 @@ routes.get('/contactForm', (req, res) => {
 });
 
 routes.post('/saveContact', (req, res) => {
+  if(!req.body.id){
+    req.body.id = new mongoose.mongo.ObjectID();
+  }
+
   Club.findByIdAndUpdate(req.body.id, req.body, { upsert: true })
     .then(() => res.redirect('/'))
     // catch validation errors
